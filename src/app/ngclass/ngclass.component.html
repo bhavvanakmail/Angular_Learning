@@ -1,0 +1,21 @@
+<!-- directive folder ==> custom.directive.ts file and give the selector refference appCustom
+   appCustom => we give this refference in ant html element-->
+<p appCustom>ngclass works!</p> 
+<div [ngClass]=" flag ? 'primary' : 'secondary' ">
+    This is example of ngClass
+</div>
+
+<!-- <button class="btn btn-success" (click)="changeFlag()">ChangeColor</button> -->
+                                <!-- OR -->
+<button class="btn btn-success" (click)="flag = !flag">ChangeColor</button>
+<br>
+<br>
+<ul *ngFor="let person of peoples">
+    <li [ngClass]="{
+        'text-success' : person.country == 'UK',
+        'text-primary' : person.country == 'USA',
+        'text-danger' : person.country == 'HK'
+
+    }" >{{person.name}} ({{person.country}})</li>
+
+</ul>

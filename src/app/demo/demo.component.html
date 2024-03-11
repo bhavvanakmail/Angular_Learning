@@ -1,0 +1,32 @@
+<p class="test">demo works!</p>
+<button (click)="Save()">Save Log</button>
+<h1>My Name is : {{name}}</h1>
+<!-- {{print()}} -->
+<p>Server with ID{{serverId}} id is {{getServerStatus()}}</p>
+<img [src]="imageUrl" alt="Image" class="img">
+<button [disabled]="isDisabled">IsActive</button>
+
+<div [innerHTML]="html">
+    
+</div>
+<h1>Event Binding Example</h1>
+<button (click)="clickMe($event)">ClickMe</button>
+<p>You have clicked {{count}}</p>
+<input type="text" (input)="demo($event)" placeholder="enter only number or charecter"><br><br><br>
+<!-- Template refference variable -->
+<input type="text" #val (input)="demo1(val)" placeholder="enter only number or charecter">
+<br><br>
+<h1>Two-Way Data Binding Example</h1>
+<div style="text-align: center;">
+    Username: <input type="text" [(ngModel)]="userName"><br>
+    <p>{{userName}}</p>
+    <button
+    [disabled]="userName === '' "
+    (click)="userName = '' ">Reset User</button>
+
+</div>
+**************************************************************************************************************************************
+<!-- <h2>Demo Component</h2>
+<button (click)="Hello()">say hello</button>
+<br> -->
+**************************************************************************************************************************************

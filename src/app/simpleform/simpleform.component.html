@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="row justify-content-center text-primary">
+        <div class="col-md-6 text-left rounded shadow py-5" style="background-color: rgb(221, 212, 223);">
+            <form #myForm="ngForm" (ngSubmit)="OnSubmit(myForm)">
+                <!-- <h2>Template Driven Form</h2> -->
+                <h2>{{ formTitle}}</h2>
+
+                <div #userDetails="ngModelGroup" ngModelGroup="userDetails">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+
+
+                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" 
+                  #emails="ngModel" [(ngModel)]="email" placeholder="Enter email" required email minlength="10"> <!-- maxlength="15" pattern="^[a-zA-Z]+$-->
+                  
+                  <small *ngIf="emails.touched && emails.errors">
+                    <small *ngIf="emails.errors['required']">Email field is required</small>
+                    <small *ngIf="emails.errors['email']">email is not valid</small>
+                    <small *ngIf="emails.errors['minlength']">Email length should be 10</small>
+                  </small>
+                </div>
+                <div class="form-group">
+
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="text" class="form-control" id="exampleInputPassword1" name="password" ngModel 
+                  placeholder="Password" required>
+                </div>
+
+                <div class="form-group">
+
+                  <label for="exampleInputPassword2">Confirm Password</label>
+                  <input type="text" class="form-control" id="exampleInputPassword2" name="confirmPassword" ngModel 
+                  placeholder="Confirm Password" required>
+                </div>
+
+                </div>
+                <div class="form-group">
+                  <label for="course">Select Course</label>
+                  <select class="form-control" name="course" id="course" ngModel [ngModel]="defaultCourse">
+                    <option value="Angular">Angular</option>
+                    <option value="HTML">HTML</option>
+                    <option value="JavaScript">JavaScript</option>
+
+                  </select>
+                </div>
+                <div class="input-group mt-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text mt-2" *ngFor="let gender of genders">
+                      <input type="radio" id="{{gender.id}}" name="gender" aria-label="Radio button for following text input" 
+                      value="{{gender.value}}" ngModel [ngModel]="defaultGender">
+                      <label for="{{gender.id}}">{{gender.value}}</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                  <button type="button" class="btn btn-warning float-rights " style="margin-left: 10px;" (click)="onReset(myForm)">Reset</button>
+                </div>
+   
+                <!-- <button [disabled]="!myForm.valid" type="submit" class="btn btn-primary mt-2">Submit</button> -->
+                <div *ngIf="isSubmitted" class="row justify-content-center mt-2">
+                  <div class="col-md-6 rounded shadow py-4">
+                    <h2>Form Data</h2>
+                    <p>Email Address: <strong>{{employee.email}}</strong></p>
+                    <p>Password: <strong>{{employee.password}}</strong></p>
+                    <p>Course: <strong>{{employee.course}}</strong></p>
+                    <p>Gender: <strong>{{employee.gender}}</strong></p>
+
+                  </div>
+                </div>
+              </form>
+        </div>
+    </div>
+</div>

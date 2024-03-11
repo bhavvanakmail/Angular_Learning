@@ -1,0 +1,19 @@
+
+<p>ngif works!</p>
+
+
+<div>
+    Show <input type="checkbox" [(ngModel)]="showMe">
+</div>
+<!-- if else  -->
+
+<p *ngIf="showMe; else elseBlock1">
+    ShowMe is checked
+</p>
+
+<ng-template #elseBlock1>
+    <p>ShowMe is checked using else block</p>
+</ng-template>
+
+<button type="button" class="btn btn-primary">Primary</button>
+

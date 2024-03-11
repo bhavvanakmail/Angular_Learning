@@ -1,0 +1,101 @@
+************************************************************************************************************************************************************************************************
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-left rounded shadow py-5">
+            <form (ngSubmit)="OnSubmit()" [formGroup]="myReactiveForm">
+                <div class="row">
+                    <h2 style="text-align:center">Reactive Form</h2>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <input type="text" formControlName="firstName" class="form-control" placeholder="First name">
+                    
+                    <div>
+                      <small class="text-danger" *ngIf="!myReactiveForm.get('firstName')?.valid &&
+                      myReactiveForm.get('firstName')?.touched">
+                      <small *ngIf="myReactiveForm.get('firstName')?.errors?.['required']">
+                      First name is required
+                    </small>        
+                    <small *ngIf="myReactiveForm.get('firstName')?.errors?.['maxlength']">
+                      this field must have at most 15 characters
+                    </small>
+                    <small *ngIf="myReactiveForm.get('firstName')?.errors?.['minlength']">
+                      this field must have at least 3 characters
+                    </small>
+                    <small class="text-danger" *ngIf="myReactiveForm.get('firstName')?.errors?.['FirstNameNotAllowed']">
+                      the first name already taken, try another !!
+                    </small>
+                  </small>
+                    </div>
+                    
+                  </div>
+                  <div class="col">
+                    <input type="text" formControlName="lastName" class="form-control" placeholder="Last name">
+                  
+                    <div>
+                      <small class="text-danger" *ngIf="!myReactiveForm.get('lastName')?.valid &&
+                      myReactiveForm.get('lastName')?.touched">
+                      <small *ngIf="myReactiveForm.get('lastName')?.errors?.['required']">
+                      Last name is required
+                    </small>        
+                    <small *ngIf="myReactiveForm.get('lastName')?.errors?.['maxlength']">
+                      this field must have at most 15 characters
+                    </small>
+                    <small *ngIf="myReactiveForm.get('lastName')?.errors?.['minlength']">
+                      this field must have at least 3 characters
+                    </small>
+                  </small>
+                    </div>
+                  
+                  </div>
+                </div>
+                <div formGroupName="address">
+                  <div class="row mt-2" >
+                  <div class="col">
+                    <input formControlName="state" class="form-control" type="text" placeholder="Enter State name">
+                  </div>
+                  <div class="col">
+                    <input formControlName="district" class="form-control" type="text" placeholder="Enter District name">
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col">
+                    <input formControlName="taluka" class="form-control" type="text" placeholder="Enter Taluka name">
+                  </div>
+                  <div class="col">
+                    <input formControlName="village" class="form-control" type="text" placeholder="Enter Village name">
+                  </div>
+                </div>
+              </div>
+                <div class="row mt-2" formArrayName="skills">
+                  <div class="col">
+                    <ng-container *ngFor="let skill of skills.controls; let i=index">
+                      <input type="text" class="form-control mt-2" placeholder="Enter Skills" formControlName="{{i}}">
+                    </ng-container>
+                </div>
+                <button class="btn btn-success mt-2" (click)="OnAddSkill()">Add skills</button>
+              </div>
+                <div class="row mt-2">
+                    <div class="col-md-6">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button class="btn btn-warning ms-2" type="button" (click)="resetForm()" >Reset</button>
+                </div>
+                </div>
+              
+              </form>
+        </div>
+        <div *ngIf="isSubmitted">
+          <p>First Name: <strong>{{myReactiveForm.get('firstName')?.value}}</strong></p>
+          <p>Last Name: <strong>{{myReactiveForm.get('lastName')?.value}}</strong></p>
+          <!-- <p>State: <strong>{{myReactiveForm.get('state')?.value}}</strong></p>
+          <p>District: <strong>{{myReactiveForm.get('district')?.value}}</strong></p>
+          <p>Taluka: <strong>{{myReactiveForm.get('taluka')?.value}}</strong></p>
+          <p>Village: <strong>{{myReactiveForm.get('village')?.value}}</strong></p> -->
+
+        </div>
+        {{myReactiveForm | json}}
+    </div>
+</div>
+
+<h2>Reactive Component</h2>
+<button (click)="Hello()">say hello</button>

@@ -1,0 +1,46 @@
+<p>pipe works!</p>
+
+
+{{name | uppercase}}
+{{lastName | lowercase}}
+<!-- <p>Todays Date : {{todaysDate | date:'shortDate'}}</p> -->
+<p>Todays Date : {{todaysDate | date:'fullDate'}}</p>
+<p>Todays Date : {{todaysDate | date}}</p>
+<p>Todays Date : {{todaysDate | date:'fullDate' | lowercase}}</p>
+<div>
+    <h3>Currency pipe</h3>
+    <p>{{price | currency:'INR'}}</p>
+    <p>{{price | currency:'CAD'}}</p>
+    <p>{{price | currency:'USD'}}</p>
+
+</div>
+
+<div>
+    <h3>TitleCase</h3>
+    <p>
+       {{fullName | titlecase}} 
+    </p>
+</div>
+<div>
+    <h3>Async pipe</h3>
+    get values from observable {{myObservable | async}}
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="from-group col-md-6">
+        <label>Miles</label>
+        <input type="text" class="form-control" (input)="onMilesChange($event)">
+    </div>
+    <div class="col-md-6">
+        <label><b>Kilometers</b></label>
+        <div>
+            <!-- {{miles | convert}} -->
+            <!-- {{miles | convert:'m' | number:'1.0-2'}}
+            {{miles | convert:'cm'}} -->
+            {{miles | convert:'km'}}
+
+        </div>
+    </div>
+</div>
+</div>
